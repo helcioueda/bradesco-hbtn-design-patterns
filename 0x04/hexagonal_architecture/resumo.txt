@@ -1,0 +1,16 @@
+A Arquitetura é um design proposto por Alistair Cockburn, com o objetivo de construir sistemas com um alto grau de desacoplamento, separando a lógica de negócio do domínio de componentes de infraestrutura.
+
+A arquitetura divide o sistema em duas partes principais:
+
+O Core (Domínio): Contém as regras de negócio e entidades que definem o comportamento da aplicação. Esta camada é o coração do sistema e deve ser completamente agóstico a tecnologias externas.
+
+A Borda (Adapters): Responsável por conectar o core ao mundo externo. Os adaptadores atuam como tradutores, convertendo chamadas de tecnologia para a linguagem do domínio.
+
+A comunicação entre essas duas camadas é feita através de Portas (interfaces). As Portas de Entrada (Driven Ports) definem os serviços que o core expõe, permitindo que componentes externos, como uma interface de usuário, acionem a lógica de negócio. As Portas de Saída (Driving Ports) definem os serviços que o core precisa para funcionar, como a persistência de dados. Os Adaptadores são as implementações concretas dessas portas.
+
+Os benefícios diretos são a independência de tecnologia e a alta testabilidade. Como a lógica de negócio não está acoplada a frameworks ou bancos de dados, os testes de unidade podem ser executados de forma rápida e isolada, sem a necessidade de um ambiente completo. Isso resulta em maior reusabilidade de código e manutenção simplificada.
+
+Embora tenha o mesmo propósito de desacoplar o domínio da infraestrutura, a Arquitetura Hexagonal não é a mesma coisa que a Clean Architecture de Robert C. Martin. A Hexagonal é um padrão mais focado na separação de responsabilidades através de portas e adaptadores, enquanto a Clean Architecture é um conceito mais abrangente, com múltiplas camadas e regras de dependência.
+
+Na minha opinião, a Arquitetura Hexagonal é uma ótima escolha para sistemas complexos e de longa duração. Em projetos pequenos, o custo-benefício pode não justificar a complexidade adicional. A necessidade de criar interfaces e implementações para cada porta pode aumentar o tempo de desenvolvimento inicial. No entanto, em sistemas com alto grau de manutenção e que precisarão de novas features no futuro, o padrão se paga a longo prazo, garantindo a robustez e a flexibilidade da arquitetura.
+
